@@ -36,11 +36,8 @@ class Session {
 
   func getLyrics(for song: Song) -> Promise<URL> {
     let name = song.name
-      .components(separatedBy: "(")
-      .first!
-      .components(separatedBy: "[")
-      .first!
-      //.replacingOccurrences(of: "&", with: "")
+      .components(separatedBy: "(").first!
+      .components(separatedBy: "[").first!
     let params = [
       "func": "getSong",
       "fmt": "json",
@@ -57,9 +54,7 @@ class Session {
         guard
           let jsString = json.array?.first?.string,
           !jsString.contains("Not found"),
-          let jsUrl = jsString
-            .components(separatedBy: "\'url\':")
-            .last
+          let jsUrl = jsString.components(separatedBy: "\'url\':").last
           else {
             return Promise(error:
               Session.Error.objectSerialization(

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TODO: Add caching feature for 'favoriting' lyrics to realmDB
+// TODO: Add caching feature for 'favoriting' lyrics into realmDB
 class LyricsViewController: UIViewController {
 
   var song: Song!
