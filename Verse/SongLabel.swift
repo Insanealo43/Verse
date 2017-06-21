@@ -10,6 +10,12 @@ import UIKit
 
 class SongLabel: UILabel {
 
+  static func releaseYear(for song: Song) -> String {
+    return String(
+      Calendar.current.component(.year, from: song.releaseDate)
+    )
+  }
+
   func setName(for song: Song) {
     text = song.name
   }
@@ -18,13 +24,8 @@ class SongLabel: UILabel {
     text = song.artist
   }
 
-  func setReleaseYear(for song: Song) {
-    text = String(
-      Calendar.current.component(
-        .year,
-        from: song.releaseDate
-      )
-    )
+  func setAlbumInfo(for song: Song) {
+    text = "\(song.album!), \(SongLabel.releaseYear(for: song))"
   }
 
 }

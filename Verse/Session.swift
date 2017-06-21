@@ -11,6 +11,12 @@ import PromiseKit
 
 class Session {
 
+  enum Error: Swift.Error {
+
+    case objectSerialization(error: Swift.Error)
+
+  }
+
   static let current = Session()
 
   func getSongs(for query: String) -> Promise<[Song]> {
@@ -28,16 +34,44 @@ class Session {
       }
   }
 
-  func getLyrics(for song: Song) -> Promise<String> {
-    let query = "?func=getSong&fmt=json&artist=\(song.artist.encoded())&song=\(song.name.encoded())"
-    let url = "\(Service.URLs.lyrics.rawValue)" + query
+  func getLyrics(for song: Song) -> Promise<URL> {
+    let name = song.name
+      .components(separatedBy: "(")
+      .first!
+      .components(separatedBy: "[")
+      .first!
+      //.replacingOccurrences(of: "&", with: "")
+    let params = [
+      "func": "getSong",
+      "fmt": "json",
+      "artist": song.artist.encoded(),
+      "song": name.encoded()
+    ]
+    let url = Service.URLs.lyrics.rawValue + params.queryString()
     return Service.shared
-      .requestPropertyList(
+      .request(
         url: url,
         method: .get
       )
       .then { json in
-        return Promise(value: "")
+        guard
+          let jsString = json.array?.first?.string,
+          !jsString.contains("Not found"),
+          let jsUrl = jsString
+            .components(separatedBy: "\'url\':")
+            .last
+          else {
+            return Promise(error:
+              Session.Error.objectSerialization(
+                error: NSError(domain: #function)
+              )
+            )
+        }
+        let url = jsUrl.replacingOccurrences(of: "\\", with: "")
+          .replacingOccurrences(of: "\'", with: "")
+          .replacingOccurrences(of: "\n", with: "")
+          .replacingOccurrences(of: "}", with: "")
+        return Promise(value: URL(string: url)!)
     }
   }
 
@@ -46,14 +80,27 @@ class Session {
 private extension String {
 
   func encoded() -> String {
-    return self
-      .components(separatedBy: .whitespaces)
+    return components(separatedBy: .whitespaces)
       .filter { !$0.isEmpty }
       .joined(separator: "+")
-      .replacingOccurrences(of: "feat.", with: "")
-      .replacingOccurrences(of: "(", with: "")
-      .replacingOccurrences(of: ")", with: "")
-      .replacingOccurrences(of: "&", with: "")
+      .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+  }
+
+}
+
+private extension Dictionary {
+
+  func queryString() -> String {
+    return "?" + map { "\($0.key)=\($0.value)" }
+      .joined(separator: "&")
+  }
+
+}
+
+private extension NSError {
+
+  convenience init(domain: String) {
+    self.init(domain: domain, code: -999, userInfo: nil)
   }
 
 }

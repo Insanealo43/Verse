@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Add Recent Searches and persist to realmDB
 class SearchViewController: UIViewController {
 
   @IBOutlet
@@ -16,8 +17,12 @@ class SearchViewController: UIViewController {
   @IBOutlet
   private weak var tableView: UITableView!
 
+  @IBOutlet
+  private weak var activityIndicator: UIActivityIndicatorView!
+
   fileprivate var songs = [Song]() {
     didSet {
+      tableView.contentOffset = .zero
       tableView.reloadData()
     }
   }
@@ -26,6 +31,7 @@ class SearchViewController: UIViewController {
     willSet {
       searchBar.isUserInteractionEnabled = !newValue
       tableView.allowsSelection = !newValue
+      newValue ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
   }
 
@@ -35,6 +41,11 @@ class SearchViewController: UIViewController {
       UINib(nibName: "SongResultsTableHeaderView", bundle: nil),
       forHeaderFooterViewReuseIdentifier: "SongsHeader"
     )
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    searchBar.becomeFirstResponder()
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,6 +65,7 @@ class SearchViewController: UIViewController {
       !term.isEmpty
       else {
       tableView.isHidden = true
+      isLoading = false
       return
     }
     isLoading = true
@@ -78,8 +90,9 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
 
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
     searchBar.setShowsCancelButton(true, animated: true)
+    return true
   }
 
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -91,11 +104,6 @@ extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     search(with: searchBar.text)
     searchBar.resignFirstResponder()
-  }
-
-  func searchBar(_ searchBar: UISearchBar,
-                 textDidChange searchText: String) {
-    
   }
 
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

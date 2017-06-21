@@ -51,21 +51,6 @@ class Service {
       .responseJSON()
   }
 
-  func requestPropertyList(url path: String,
-               method: HTTPMethod,
-               parameters: Parameters? = nil,
-               encoding: ParameterEncoding = URLEncoding.default) -> Promise<JSON> {
-    return sessionManager
-      .request(
-        URL(string: path)!,
-        method: method,
-        parameters: parameters,
-        encoding: encoding,
-        headers: nil
-      )
-      .responsePropertyList()
-  }
-
 }
 
 extension DataRequest {
@@ -78,25 +63,20 @@ extension DataRequest {
         case .success(let json):
           fulfill(JSON(json))
         case .failure(let error):
-          reject(Service.Error.jsonSerialization(error: error))
+          if
+            let data = response.data,
+            let javascriptString = String(data: data, encoding: .utf8),
+            let json = try? JSONSerialization.data(
+              withJSONObject: [javascriptString],
+              options: []) {
+            fulfill(JSON(json))
+          }
+          else {
+            reject(Service.Error.jsonSerialization(error: error))
+          }
         }
       }
     }
-  }
-
-  func responsePropertyList(queue: DispatchQueue? = queue,
-                            options: PropertyListSerialization.ReadOptions = .mutableContainersAndLeaves) -> Promise<JSON> {
-    return Promise { fulfill, reject in
-      responsePropertyList(queue: queue, options: options) { response in
-        switch response.result {
-        case .success(let json):
-          fulfill(JSON(json))
-        case .failure(let error):
-          reject(Service.Error.jsonSerialization(error: error))
-        }
-      }
-    }
-
   }
 
 }

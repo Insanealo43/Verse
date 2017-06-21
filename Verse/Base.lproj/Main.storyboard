@@ -9,6 +9,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -84,7 +85,7 @@
                                                 <rect key="frame" x="0.0" y="40" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XML-cA-6yl" id="T3Z-Mk-cEx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album-placeholder-icon" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-KY-PJT" customClass="PhotoImageView" customModule="Verse" customModuleProvider="target">
@@ -147,7 +148,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="PWa-HR-ALD" firstAttribute="width" secondItem="sWh-Zs-h2H" secondAttribute="width" id="3Ly-GE-UGE"/>
                                     <constraint firstItem="PWa-HR-ALD" firstAttribute="centerX" secondItem="sWh-Zs-h2H" secondAttribute="centerX" id="A03-Iv-NPa"/>
@@ -163,17 +164,24 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fM6-hd-U89">
+                                <rect key="frame" x="169" y="380.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="fM6-hd-U89" firstAttribute="centerX" secondItem="Lph-VN-ewB" secondAttribute="centerX" id="4zy-e0-rxf"/>
                             <constraint firstItem="sWh-Zs-h2H" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="GeI-rh-CkQ"/>
                             <constraint firstItem="sWh-Zs-h2H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Uup-j3-uN3"/>
+                            <constraint firstItem="fM6-hd-U89" firstAttribute="centerY" secondItem="Lph-VN-ewB" secondAttribute="centerY" id="ff6-cN-MxL"/>
                             <constraint firstItem="sWh-Zs-h2H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rYH-yi-yQG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sWh-Zs-h2H" secondAttribute="bottom" id="srt-Co-B9Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uum-f3-CNm"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="fM6-hd-U89" id="Vxz-4k-O8X"/>
                         <outlet property="searchBar" destination="axO-ju-jL4" id="d8v-iB-WCa"/>
                         <outlet property="tableView" destination="Lph-VN-ewB" id="CF4-wt-TbC"/>
                     </connections>
@@ -221,18 +229,39 @@
                                             <constraint firstAttribute="height" constant="48" id="rcK-eq-B2r"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQW-Nj-jj6">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQW-Nj-jj6">
                                         <rect key="frame" x="0.0" y="48" width="375" height="589"/>
+                                        <subviews>
+                                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNP-6L-taA">
+                                                <rect key="frame" x="15" y="-589" width="345" height="1178"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eBa-2e-HuH" id="EAz-la-jL1"/>
+                                                </connections>
+                                            </webView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="uNP-6L-taA" firstAttribute="height" secondItem="AQW-Nj-jj6" secondAttribute="height" multiplier="2" id="8rx-j2-Fld"/>
+                                            <constraint firstItem="uNP-6L-taA" firstAttribute="width" secondItem="AQW-Nj-jj6" secondAttribute="width" constant="-30" id="apY-fA-pUK"/>
+                                            <constraint firstItem="uNP-6L-taA" firstAttribute="centerX" secondItem="AQW-Nj-jj6" secondAttribute="centerX" id="cBy-nl-qFU"/>
+                                            <constraint firstAttribute="bottom" secondItem="uNP-6L-taA" secondAttribute="bottom" id="sgK-2w-IR2"/>
+                                        </constraints>
                                     </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lv5-Uy-Ee0">
+                                        <rect key="frame" x="169" y="324" width="37" height="37"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="lv5-Uy-Ee0" firstAttribute="centerY" secondItem="AQW-Nj-jj6" secondAttribute="centerY" id="4MR-LK-pbJ"/>
                                     <constraint firstItem="AQW-Nj-jj6" firstAttribute="centerX" secondItem="hQs-Md-T49" secondAttribute="centerX" id="9zh-Dx-NLe"/>
                                     <constraint firstItem="frd-tC-cHT" firstAttribute="width" secondItem="hQs-Md-T49" secondAttribute="width" id="Rag-3c-ksx"/>
+                                    <constraint firstItem="AQW-Nj-jj6" firstAttribute="top" secondItem="frd-tC-cHT" secondAttribute="bottom" id="Ug2-vh-FGX"/>
                                     <constraint firstItem="frd-tC-cHT" firstAttribute="centerX" secondItem="hQs-Md-T49" secondAttribute="centerX" id="UtG-Nd-CBw"/>
                                     <constraint firstItem="frd-tC-cHT" firstAttribute="top" secondItem="hQs-Md-T49" secondAttribute="top" id="azn-MM-dh7"/>
-                                    <constraint firstItem="AQW-Nj-jj6" firstAttribute="top" secondItem="frd-tC-cHT" secondAttribute="bottom" id="brk-pr-jI4"/>
+                                    <constraint firstItem="lv5-Uy-Ee0" firstAttribute="centerX" secondItem="AQW-Nj-jj6" secondAttribute="centerX" id="czs-c4-eZF"/>
                                     <constraint firstAttribute="bottom" secondItem="AQW-Nj-jj6" secondAttribute="bottom" id="par-AY-eCT"/>
                                     <constraint firstItem="AQW-Nj-jj6" firstAttribute="width" secondItem="hQs-Md-T49" secondAttribute="width" id="uX1-0O-mCa"/>
                                 </constraints>
@@ -251,6 +280,10 @@
                             <constraint firstItem="hQs-Md-T49" firstAttribute="top" secondItem="vFT-Pk-Hbc" secondAttribute="bottom" constant="10" id="sXL-vC-Ct3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="lv5-Uy-Ee0" id="88V-f2-syh"/>
+                        <outlet property="webView" destination="uNP-6L-taA" id="doo-SW-aK3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJO-XP-1cQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
