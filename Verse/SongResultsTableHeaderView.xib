@@ -19,8 +19,8 @@
                     <rect key="frame" x="-0.5" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6M-6C-3gT">
-                            <rect key="frame" x="10" y="21" width="175" height="33"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <rect key="frame" x="10" y="19" width="138.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -28,11 +28,10 @@
                     <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="K6M-6C-3gT" firstAttribute="leading" secondItem="b5j-PC-p5O" secondAttribute="leading" constant="10" id="Zdb-J8-Ecf"/>
-                        <constraint firstAttribute="bottom" secondItem="K6M-6C-3gT" secondAttribute="bottom" constant="10" id="mUN-oP-lI4"/>
+                        <constraint firstItem="K6M-6C-3gT" firstAttribute="centerY" secondItem="b5j-PC-p5O" secondAttribute="centerY" id="ogI-XU-Etw"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="b5j-PC-p5O" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Qmj-AY-hLG"/>
                 <constraint firstItem="b5j-PC-p5O" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="T6l-Ux-0jq"/>

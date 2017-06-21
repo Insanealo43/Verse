@@ -9,6 +9,18 @@
 import RealmSwift
 import SwiftyJSON
 
+@available(iOS 10.0, *)
+var dateFormatter: ISO8601DateFormatter = {
+  let formatter = ISO8601DateFormatter()
+  formatter.formatOptions = [
+    .withInternetDateTime,
+    .withTimeZone,
+    .withDashSeparatorInDate,
+    .withColonSeparatorInTime
+  ]
+  return formatter
+}()
+
 class Song: Object {
 
   dynamic var id: String!
@@ -16,6 +28,7 @@ class Song: Object {
   dynamic var artist: String!
   dynamic var album: String!
   dynamic var artwork: Photo!
+  dynamic var releaseDate: Date!
 
   convenience init?(_ json: JSON) {
     guard
@@ -24,7 +37,8 @@ class Song: Object {
       let name = json["trackName"].string,
       let artist = json["artistName"].string,
       let album = json["collectionName"].string,
-      let artworkUrl = json["artworkUrl100"].string
+      let artworkUrl = json["artworkUrl100"].string,
+      let releaseDate = json["releaseDate"].string
       else {
       return nil
     }
@@ -34,6 +48,7 @@ class Song: Object {
     self.artist = artist
     self.album = album
     self.artwork = Photo(url: artworkUrl)
+    self.releaseDate = dateFormatter.date(from: releaseDate)!
   }
 
   override static func primaryKey() -> String? {

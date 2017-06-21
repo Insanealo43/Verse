@@ -10,14 +10,24 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+  @IBOutlet
+  private weak var searchBar: UISearchBar!
+
+  @IBOutlet
+  private weak var tableView: UITableView!
+
   fileprivate var songs = [Song]() {
     didSet {
       tableView.reloadData()
     }
   }
 
-  @IBOutlet
-  private weak var tableView: UITableView!
+  private var isLoading: Bool = false {
+    willSet {
+      searchBar.isUserInteractionEnabled = !newValue
+      tableView.allowsSelection = !newValue
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,13 +35,39 @@ class SearchViewController: UIViewController {
       UINib(nibName: "SongResultsTableHeaderView", bundle: nil),
       forHeaderFooterViewReuseIdentifier: "SongsHeader"
     )
-    User.current.getSongs(for: "tom  waits")
-    .then { songs in
-      self.songs = songs
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    super.prepare(for: segue, sender: sender)
+    switch (segue.destination, sender) {
+    case (let viewController as LyricsViewController,
+          let tableViewCell as SongTableViewCell):
+      viewController.song = tableViewCell.song
+    default:
+      break
     }
-    .catch { error in
-      self.showAlert(error)
-    } 
+  }
+
+  fileprivate func search(with string: String?) {
+    guard
+      let term = string,
+      !term.isEmpty
+      else {
+      tableView.isHidden = true
+      return
+    }
+    isLoading = true
+    tableView.isHidden = false
+    Session.current.getSongs(for: term)
+      .then { songs in
+        self.songs = songs
+      }
+      .catch { error in
+        self.showAlert(error)
+      }
+      .always {
+        self.isLoading = false
+    }
   }
 
   private func showAlert(_ error: Error? = nil) {
@@ -42,9 +78,28 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
 
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.setShowsCancelButton(true, animated: true)
+  }
+
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = nil
+    search(with: searchBar.text)
+    searchBar.resignFirstResponder()
+  }
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    search(with: searchBar.text)
+    searchBar.resignFirstResponder()
+  }
+
   func searchBar(_ searchBar: UISearchBar,
                  textDidChange searchText: String) {
     
+  }
+
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    searchBar.setShowsCancelButton(false, animated: true)
   }
 
 }
@@ -73,7 +128,11 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
       withIdentifier: "SongResultCell",
       for: indexPath
     )
-    return cell
+    guard let songCell = cell as? SongTableViewCell else {
+      return cell
+    }
+    songCell.song = songs[indexPath.row]
+    return songCell
   }
 
 }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		04322A37365D85C343792FF3 /* Pods_VerseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB5F75C30C7CA892CA1CAAE /* Pods_VerseTests.framework */; };
+		49361C2A1EFA4CC600C702DF /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49361C291EFA4CC600C702DF /* SongTableViewCell.swift */; };
+		49361C2D1EFA4CFF00C702DF /* UIView+IBInspectables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49361C2C1EFA4CFF00C702DF /* UIView+IBInspectables.swift */; };
+		49361C2F1EFA508C00C702DF /* SongLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49361C2E1EFA508C00C702DF /* SongLabel.swift */; };
+		49361C311EFA547600C702DF /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49361C301EFA547600C702DF /* PhotoImageView.swift */; };
+		49361C331EFA5F4000C702DF /* LyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49361C321EFA5F4000C702DF /* LyricsViewController.swift */; };
 		494CD4E91EF8C3C000F24608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CD4E81EF8C3C000F24608 /* AppDelegate.swift */; };
 		494CD4EE1EF8C3C000F24608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494CD4EC1EF8C3C000F24608 /* Main.storyboard */; };
 		494CD4F01EF8C3C000F24608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494CD4EF1EF8C3C000F24608 /* Assets.xcassets */; };
@@ -15,7 +20,7 @@
 		494CD4FE1EF8C3C000F24608 /* VerseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CD4FD1EF8C3C000F24608 /* VerseTests.swift */; };
 		49EC10381EF8D12200E87FCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC10371EF8D12200E87FCC /* SearchViewController.swift */; };
 		49EC103B1EF8D19900E87FCC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC103A1EF8D19900E87FCC /* Service.swift */; };
-		49EC103F1EF8DA1500E87FCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC103E1EF8DA1500E87FCC /* User.swift */; };
+		49EC103F1EF8DA1500E87FCC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC103E1EF8DA1500E87FCC /* Session.swift */; };
 		49EC10421EF8E0FD00E87FCC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC10411EF8E0FD00E87FCC /* Song.swift */; };
 		49EC10461EF8EF2700E87FCC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC10451EF8EF2700E87FCC /* Photo.swift */; };
 		49EC10481EF9F64100E87FCC /* SongResultsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC10471EF9F64100E87FCC /* SongResultsTableHeaderView.swift */; };
@@ -37,6 +42,11 @@
 		0CB5F75C30C7CA892CA1CAAE /* Pods_VerseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39CB4FD1EE2D4B29F0666784 /* Pods-VerseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerseTests/Pods-VerseTests.release.xcconfig"; sourceTree = "<group>"; };
 		4270CAD78F5C46360ED1DDEE /* Pods-Verse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Verse.release.xcconfig"; path = "Pods/Target Support Files/Pods-Verse/Pods-Verse.release.xcconfig"; sourceTree = "<group>"; };
+		49361C291EFA4CC600C702DF /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		49361C2C1EFA4CFF00C702DF /* UIView+IBInspectables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectables.swift"; sourceTree = "<group>"; };
+		49361C2E1EFA508C00C702DF /* SongLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongLabel.swift; sourceTree = "<group>"; };
+		49361C301EFA547600C702DF /* PhotoImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		49361C321EFA5F4000C702DF /* LyricsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsViewController.swift; sourceTree = "<group>"; };
 		494CD4E51EF8C3C000F24608 /* Verse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		494CD4E81EF8C3C000F24608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		494CD4ED1EF8C3C000F24608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +58,7 @@
 		494CD4FF1EF8C3C000F24608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49EC10371EF8D12200E87FCC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		49EC103A1EF8D19900E87FCC /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		49EC103E1EF8DA1500E87FCC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		49EC103E1EF8DA1500E87FCC /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		49EC10411EF8E0FD00E87FCC /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		49EC10451EF8EF2700E87FCC /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		49EC10471EF9F64100E87FCC /* SongResultsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongResultsTableHeaderView.swift; sourceTree = "<group>"; };
@@ -78,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49361C2B1EFA4CE600C702DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49361C2C1EFA4CFF00C702DF /* UIView+IBInspectables.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		494CD4DC1EF8C3C000F24608 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +119,7 @@
 		494CD4E71EF8C3C000F24608 /* Verse */ = {
 			isa = PBXGroup;
 			children = (
+				49361C2B1EFA4CE600C702DF /* Extensions */,
 				49EC10401EF8E09200E87FCC /* Models */,
 				49EC10391EF8D18A00E87FCC /* Controllers */,
 				49EC10431EF8E87400E87FCC /* Views */,
@@ -125,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				49EC10371EF8D12200E87FCC /* SearchViewController.swift */,
+				49361C321EFA5F4000C702DF /* LyricsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -133,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				49EC103A1EF8D19900E87FCC /* Service.swift */,
-				49EC103E1EF8DA1500E87FCC /* User.swift */,
+				49EC103E1EF8DA1500E87FCC /* Session.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +172,9 @@
 			children = (
 				49EC10471EF9F64100E87FCC /* SongResultsTableHeaderView.swift */,
 				49EC10491EF9F65000E87FCC /* SongResultsTableHeaderView.xib */,
+				49361C291EFA4CC600C702DF /* SongTableViewCell.swift */,
+				49361C2E1EFA508C00C702DF /* SongLabel.swift */,
+				49361C301EFA547600C702DF /* PhotoImageView.swift */,
 				49EC10441EF8E89A00E87FCC /* Storyboards */,
 			);
 			name = Views;
@@ -392,9 +415,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EC10461EF8EF2700E87FCC /* Photo.swift in Sources */,
-				49EC103F1EF8DA1500E87FCC /* User.swift in Sources */,
+				49EC103F1EF8DA1500E87FCC /* Session.swift in Sources */,
 				49EC10381EF8D12200E87FCC /* SearchViewController.swift in Sources */,
 				49EC10481EF9F64100E87FCC /* SongResultsTableHeaderView.swift in Sources */,
+				49361C311EFA547600C702DF /* PhotoImageView.swift in Sources */,
+				49361C2D1EFA4CFF00C702DF /* UIView+IBInspectables.swift in Sources */,
+				49361C331EFA5F4000C702DF /* LyricsViewController.swift in Sources */,
+				49361C2F1EFA508C00C702DF /* SongLabel.swift in Sources */,
+				49361C2A1EFA4CC600C702DF /* SongTableViewCell.swift in Sources */,
 				494CD4E91EF8C3C000F24608 /* AppDelegate.swift in Sources */,
 				49EC103B1EF8D19900E87FCC /* Service.swift in Sources */,
 				49EC10421EF8E0FD00E87FCC /* Song.swift in Sources */,

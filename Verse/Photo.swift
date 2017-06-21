@@ -6,7 +6,6 @@
 //  Copyright © 2017 ALV. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
 
 class Photo: Object {
