@@ -14,17 +14,20 @@ class User {
   static let current = User()
 
   func getSongs(for query: String) -> Promise<[Song]> {
-    let url = Service.URLs.itunes.rawValue
-    let term = query.components(separatedBy: .whitespaces)
+    let term = query
+      .components(separatedBy: .whitespaces)
       .filter { !$0.isEmpty }
       .joined(separator: "+")
-    let params = ["term": term]
     return Service.shared
-      .request(url: url, method: .post, parameters: params)
+      .request(
+        url: Service.URLs.itunes.rawValue,
+        method: .post,
+        parameters: [
+          "term": term
+        ]
+      )
       .then { json in
-        guard let results = json["results"].array else {
-          return Promise(value: [])
-        }
+        let results = json["results"].array ?? []
         return Promise(value: results.flatMap { Song($0) })
       }
   }
