@@ -103,14 +103,14 @@ class SearchViewController: UIViewController {
     isLoading = true
     mode = .results
     Session.current.getSongs(for: term)
-      .then { songs in
-        self.songs = songs
-      }
-      .catch { error in
-        self.showAlert(error)
-      }
-      .always {
-        self.isLoading = false
+    .then { songs in
+      self.songs = songs
+    }
+    .catch { error in
+      self.showAlert(error)
+    }
+    .always {
+      self.isLoading = false
     }
   }
 
@@ -195,6 +195,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     songCell.song = song(for: indexPath)
     return songCell
+  }
+
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return mode == .favorites
+  }
+
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      try! Session.current.unfavorite(song: song(for: indexPath))
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
   }
 
 }

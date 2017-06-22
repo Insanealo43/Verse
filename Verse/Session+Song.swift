@@ -14,10 +14,12 @@ extension Session {
     return Database.cache.favorties
   }
 
+  @discardableResult
   func favorite(song: Song) throws {
     try Database.cache.insert(song: song)
   }
 
+  @discardableResult
   func unfavorite(song: Song) throws -> Song {
     let unmanagedSong = Song(value: song)
     try Database.cache.delete(song: song)

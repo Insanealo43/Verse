@@ -13,7 +13,6 @@ extension Database {
   class Cache: Database {
 
     static let DidInsertSongNotificationName = NSNotification.Name("DidInsertSong")
-
     static let DidDeleteSongNotificationName = NSNotification.Name("DidDeleteSong")
 
     private(set) lazy var favorties: Results<Song> = self.results()
