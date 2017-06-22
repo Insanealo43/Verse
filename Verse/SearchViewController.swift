@@ -8,22 +8,51 @@
 
 import UIKit
 
-// TODO: Add Recent Searches and persist to realmDB
 class SearchViewController: UIViewController {
 
-  @IBOutlet
-  private weak var searchBar: UISearchBar!
+  enum Mode {
+
+    case favorites
+    case results
+
+  }
 
   @IBOutlet
-  private weak var tableView: UITableView!
+  fileprivate weak var searchBar: UISearchBar!
+
+  @IBOutlet
+  fileprivate weak var tableView: UITableView!
 
   @IBOutlet
   private weak var activityIndicator: UIActivityIndicatorView!
 
-  fileprivate var songs = [Song]() {
+  fileprivate var mode: Mode = .favorites {
+    didSet {
+      if mode != oldValue {
+        tableView.contentOffset = .zero
+        tableView.reloadData()
+      }
+    }
+  }
+
+  private(set) lazy var favoriteSongs = Session.current.favoriteSongs
+
+  fileprivate var songs: Array<Song> = [] {
     didSet {
       tableView.contentOffset = .zero
       tableView.reloadData()
+      if songs.isEmpty {
+        showAlert()
+      }
+    }
+  }
+
+  fileprivate var numberSongs: Int {
+    switch mode {
+    case .favorites:
+      return favoriteSongs.count
+    case .results:
+      return songs.count
     }
   }
 
@@ -45,7 +74,9 @@ class SearchViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    searchBar.becomeFirstResponder()
+    if favoriteSongs.isEmpty {
+      searchBar.becomeFirstResponder()
+    }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,6 +85,7 @@ class SearchViewController: UIViewController {
     case (let viewController as LyricsViewController,
           let tableViewCell as SongTableViewCell):
       viewController.song = tableViewCell.song
+      viewController.delegate = self
     default:
       break
     }
@@ -64,12 +96,12 @@ class SearchViewController: UIViewController {
       let term = string,
       !term.isEmpty
       else {
-      tableView.isHidden = true
+      mode = .favorites
       isLoading = false
       return
     }
     isLoading = true
-    tableView.isHidden = false
+    mode = .results
     Session.current.getSongs(for: term)
       .then { songs in
         self.songs = songs
@@ -86,6 +118,15 @@ class SearchViewController: UIViewController {
 
   }
 
+  fileprivate func song(for indexPath: IndexPath) -> Song {
+    switch mode {
+    case .favorites:
+      return favoriteSongs[indexPath.row]
+    case .results:
+      return songs[indexPath.row]
+    }
+  }
+
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -93,6 +134,12 @@ extension SearchViewController: UISearchBarDelegate {
   func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
     searchBar.setShowsCancelButton(true, animated: true)
     return true
+  }
+
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText.isEmpty {
+      search(with: nil)
+    }
   }
 
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -116,18 +163,25 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    return songs.count
+    return numberSongs
   }
 
   func tableView(_ tableView: UITableView,
                  viewForHeaderInSection section: Int) -> UIView? {
-    switch section {
-    case 0:
-      return tableView
-        .dequeueReusableHeaderFooterView(withIdentifier: "SongsHeader")
+    let header = tableView
+      .dequeueReusableHeaderFooterView(withIdentifier: "SongsHeader")
+    guard let songsHeader = header as? SongResultsTableHeaderView else {
+      return nil
+    }
+    switch (section, mode) {
+    case (0, .favorites):
+      songsHeader.title = "Favorite Songs"
+    case (0, .results):
+      songsHeader.title = "Song Results"
     default:
       return nil
     }
+    return songsHeader
   }
 
   func tableView(_ tableView: UITableView,
@@ -139,8 +193,16 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     guard let songCell = cell as? SongTableViewCell else {
       return cell
     }
-    songCell.song = songs[indexPath.row]
+    songCell.song = song(for: indexPath)
     return songCell
+  }
+
+}
+
+extension SearchViewController: SongDelegate {
+
+  func didToggleFavoriteSong(_ song: Song) {
+    tableView.reloadData()
   }
 
 }

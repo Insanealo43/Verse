@@ -8,10 +8,19 @@
 
 import UIKit
 
-// TODO: Add caching feature for 'favoriting' lyrics into realmDB
+private var favoriteImage: UIImage { return #imageLiteral(resourceName: "favorite-icon") }
+
+protocol SongDelegate: class {
+
+  func didToggleFavoriteSong(_ song: Song)
+
+}
+
 class LyricsViewController: UIViewController {
 
   var song: Song!
+
+  weak var delegate: SongDelegate?
 
   @IBOutlet
   private weak var albumImageView: PhotoImageView!
@@ -28,19 +37,35 @@ class LyricsViewController: UIViewController {
   @IBOutlet
   fileprivate weak var activityIndicator: UIActivityIndicatorView!
 
+  @IBOutlet
+  private weak var favoriteButton: UIButton!
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    webView.scrollView.showsVerticalScrollIndicator = false
     albumImageView.photo = song.artwork
     songLabel.setName(for: song)
     albumLabel.text = song.album
-    webView.scrollView.showsVerticalScrollIndicator = false
+    setFavorite()
     getLyrics()
+  }
+
+  @IBAction
+  func saveTapped(_ sender: Any) {
+    try? Session.current.favorite(song: song)
   }
 
   @IBAction
   func hideTapped(_ sender: Any) {
     dismiss(animated: true, completion: nil)
     view.backgroundColor = .clear
+  }
+
+  @IBAction
+  func favoriteTapped(_ sender: Any) {
+    song = Session.current.toggleFavorite(song: song)
+    setFavorite()
+    delegate?.didToggleFavoriteSong(song)
   }
 
   private func getLyrics() {
@@ -71,6 +96,14 @@ class LyricsViewController: UIViewController {
     present(alert, animated: true, completion: nil)
   }
 
+  private func setFavorite() {
+    var image = favoriteImage
+    if !Session.current.isFavorite(song: song.id) {
+      image = image.tint(with: .lightGray)
+    }
+    favoriteButton.setImage(image, for: .normal)
+  }
+
 }
 
 extension LyricsViewController: UIWebViewDelegate {
@@ -81,4 +114,31 @@ extension LyricsViewController: UIWebViewDelegate {
     activityIndicator.stopAnimating()
   }
 
+}
+
+private extension UIImage {
+
+  func tint(with color: UIColor) -> UIImage {
+    return withRenderingMode(.alwaysTemplate)
+      .mask(with: color)
+  }
+
+  private func mask(with color: UIColor) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, scale)
+    guard let context = UIGraphicsGetCurrentContext() else {
+      return self
+    }
+    context.translateBy(x: 0, y: size.height)
+    context.scaleBy(x: 1.0, y: -1.0)
+    context.setBlendMode(.normal)
+    let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    context.clip(to: rect, mask: cgImage!)
+    color.setFill()
+    context.fill(rect)
+    guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
+      return self
+    }
+    UIGraphicsEndImageContext()
+    return newImage
+  }
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2017 ALV. All rights reserved.
 //
 
-import Foundation
 import PromiseKit
 
 class Session {

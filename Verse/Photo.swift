@@ -6,13 +6,13 @@
 //  Copyright © 2017 ALV. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
-class Photo {
+class Photo: Object {
 
-  var id: String!
-  var url: String!
-  var data: Data?
+  dynamic var id: String!
+  dynamic var url: String!
+  dynamic var data: Data?
 
   convenience init(id: String = UUID().uuidString,
                    url: String,
@@ -21,6 +21,10 @@ class Photo {
     self.id = id
     self.url = url
     self.data = data
+  }
+
+  override static func primaryKey() -> String? {
+    return "id"
   }
 
 }

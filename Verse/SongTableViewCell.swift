@@ -16,6 +16,7 @@ class SongTableViewCell: UITableViewCell {
       trackLabel.setName(for: newValue)
       artistLabel.setArtist(for: newValue)
       infoLabel.setAlbumInfo(for: newValue)
+      favoriteImageView.isHidden = !Session.current.isFavorite(song: newValue.id)
     }
   }
 
@@ -30,5 +31,8 @@ class SongTableViewCell: UITableViewCell {
 
   @IBOutlet
   private weak var infoLabel: SongLabel!
+
+  @IBOutlet
+  private weak var favoriteImageView: UIImageView!
 
 }
