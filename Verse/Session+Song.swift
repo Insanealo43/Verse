@@ -19,16 +19,9 @@ extension Session {
   }
 
   func unfavorite(song: Song) throws -> Song {
-    let validSong = Song(
-      id: song.id,
-      name: song.name,
-      artist: song.artist,
-      album: song.album,
-      releaseDate: song.releaseDate,
-      artwork: song.artwork
-    )
+    let unmanagedSong = Song(value: song)
     try Database.cache.delete(song: song)
-    return validSong
+    return unmanagedSong
   }
 
   func isFavorite(song id: String) -> Bool {
@@ -41,7 +34,7 @@ extension Session {
       return try! unfavorite(song: song)
     }
     else {
-      try? favorite(song: song)
+      try! favorite(song: song)
       return Database.cache.select(song: song.id)!
     }
   }

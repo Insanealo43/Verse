@@ -84,7 +84,7 @@ class SearchViewController: UIViewController {
     switch (segue.destination, sender) {
     case (let viewController as LyricsViewController,
           let tableViewCell as SongTableViewCell):
-      viewController.song = tableViewCell.song
+      viewController.song = Song(value: tableViewCell.song)
       viewController.delegate = self
     default:
       break
