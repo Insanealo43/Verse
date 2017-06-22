@@ -17,6 +17,9 @@
 		494CD4F01EF8C3C000F24608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494CD4EF1EF8C3C000F24608 /* Assets.xcassets */; };
 		494CD4F31EF8C3C000F24608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494CD4F11EF8C3C000F24608 /* LaunchScreen.storyboard */; };
 		494CD4FE1EF8C3C000F24608 /* VerseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CD4FD1EF8C3C000F24608 /* VerseTests.swift */; };
+		495353701EFBA36B004F9046 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4953536E1EFBA36B004F9046 /* Database.swift */; };
+		495353711EFBA36B004F9046 /* Database+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4953536F1EFBA36B004F9046 /* Database+Cache.swift */; };
+		495353731EFBA37A004F9046 /* Session+Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495353721EFBA37A004F9046 /* Session+Song.swift */; };
 		49948E1E1EFB3E8B00ACAC7C /* UIView+IBInspectables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49948E1D1EFB3E8B00ACAC7C /* UIView+IBInspectables.swift */; };
 		49EC10381EF8D12200E87FCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC10371EF8D12200E87FCC /* SearchViewController.swift */; };
 		49EC103B1EF8D19900E87FCC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC103A1EF8D19900E87FCC /* Service.swift */; };
@@ -55,6 +58,9 @@
 		494CD4F91EF8C3C000F24608 /* VerseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		494CD4FD1EF8C3C000F24608 /* VerseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseTests.swift; sourceTree = "<group>"; };
 		494CD4FF1EF8C3C000F24608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4953536E1EFBA36B004F9046 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		4953536F1EFBA36B004F9046 /* Database+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Cache.swift"; sourceTree = "<group>"; };
+		495353721EFBA37A004F9046 /* Session+Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Song.swift"; sourceTree = "<group>"; };
 		49948E1D1EFB3E8B00ACAC7C /* UIView+IBInspectables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectables.swift"; sourceTree = "<group>"; };
 		49EC10371EF8D12200E87FCC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		49EC103A1EF8D19900E87FCC /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 			children = (
 				49361C2B1EFA4CE600C702DF /* Extensions */,
 				49EC10401EF8E09200E87FCC /* Models */,
+				4953536D1EFBA35D004F9046 /* Database */,
 				49EC10391EF8D18A00E87FCC /* Controllers */,
 				49EC10431EF8E87400E87FCC /* Views */,
 				49EC10361EF8D10B00E87FCC /* View Controllers */,
@@ -140,6 +147,15 @@
 			path = VerseTests;
 			sourceTree = "<group>";
 		};
+		4953536D1EFBA35D004F9046 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4953536E1EFBA36B004F9046 /* Database.swift */,
+				4953536F1EFBA36B004F9046 /* Database+Cache.swift */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		49EC10361EF8D10B00E87FCC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +170,7 @@
 			children = (
 				49EC103A1EF8D19900E87FCC /* Service.swift */,
 				49EC103E1EF8DA1500E87FCC /* Session.swift */,
+				495353721EFBA37A004F9046 /* Session+Song.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -414,9 +431,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495353731EFBA37A004F9046 /* Session+Song.swift in Sources */,
 				4932BDBE1EFB3FF0003412A6 /* SongTableViewCell.swift in Sources */,
 				49EC10461EF8EF2700E87FCC /* Photo.swift in Sources */,
 				49EC103F1EF8DA1500E87FCC /* Session.swift in Sources */,
+				495353711EFBA36B004F9046 /* Database+Cache.swift in Sources */,
 				49EC10381EF8D12200E87FCC /* SearchViewController.swift in Sources */,
 				49EC10481EF9F64100E87FCC /* SongResultsTableHeaderView.swift in Sources */,
 				49361C311EFA547600C702DF /* PhotoImageView.swift in Sources */,
@@ -425,6 +444,7 @@
 				494CD4E91EF8C3C000F24608 /* AppDelegate.swift in Sources */,
 				49EC103B1EF8D19900E87FCC /* Service.swift in Sources */,
 				49948E1E1EFB3E8B00ACAC7C /* UIView+IBInspectables.swift in Sources */,
+				495353701EFBA36B004F9046 /* Database.swift in Sources */,
 				49EC10421EF8E0FD00E87FCC /* Song.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

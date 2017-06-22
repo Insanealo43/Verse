@@ -8,53 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>AlamofireImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-Verse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-VerseTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>PromiseKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -65,16 +53,6 @@
 			<true/>
 		</dict>
 		<key>10A599A7601B7C7CF09A082424EDE3BB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>611188BFBB6C89C5BAAC4DD778FB5EE1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>70591F5C636BB310960EB1578DEB7433</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -105,11 +83,6 @@
 			<true/>
 		</dict>
 		<key>E21946A8AD5081D593A3872378C2B22D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E53A8A38540A7C69E656B0850BDD8250</key>
 		<dict>
 			<key>primary</key>
 			<true/>
