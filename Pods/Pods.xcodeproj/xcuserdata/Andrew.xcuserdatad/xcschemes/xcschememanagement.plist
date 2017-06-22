@@ -29,6 +29,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>611188BFBB6C89C5BAAC4DD778FB5EE1</key>
+		<key>0581292B9AE3DF0B45E8B4E89140185C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70591F5C636BB310960EB1578DEB7433</key>
+		<key>10A599A7601B7C7CF09A082424EDE3BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7D85517E8C5C3C1981CCBDEFCD8DB846</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E21946A8AD5081D593A3872378C2B22D</key>
+		<key>BBF7E1C35665569B2041841BC9D74F05</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E53A8A38540A7C69E656B0850BDD8250</key>
+		<key>BED50035BD012C9646E785054738FAC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E21946A8AD5081D593A3872378C2B22D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

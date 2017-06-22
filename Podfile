@@ -10,6 +10,7 @@ target 'Verse' do
   pod 'AlamofireImage'
   pod 'SwiftyJSON'
   pod 'PromiseKit'
+  pod 'RealmSwift'
 
   target 'VerseTests' do
     inherit! :search_paths
