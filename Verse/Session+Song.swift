@@ -18,6 +18,7 @@ extension Session {
     try Database.cache.insert(song: song)
   }
 
+  @discardableResult
   func unfavorite(song: Song) throws -> Song {
     let unmanagedSong = Song(value: song)
     try Database.cache.delete(song: song)
