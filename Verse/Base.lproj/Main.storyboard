@@ -27,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-EL-yfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="99"/>
+            <point key="canvasLocation" x="113" y="99"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -134,10 +134,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="albumImageView" destination="9Kg-KY-PJT" id="4mZ-2q-g9w"/>
-                                                    <outlet property="artistLabel" destination="Qz2-KW-9Os" id="Oee-Hs-zCm"/>
-                                                    <outlet property="infoLabel" destination="EWG-Ie-ihO" id="4Ec-um-nE3"/>
-                                                    <outlet property="trackLabel" destination="i2M-Qk-6JK" id="BAb-ir-uqF"/>
+                                                    <outlet property="albumImageView" destination="9Kg-KY-PJT" id="bsq-9C-1Ks"/>
+                                                    <outlet property="artistLabel" destination="Qz2-KW-9Os" id="6zf-wd-EPh"/>
+                                                    <outlet property="infoLabel" destination="EWG-Ie-ihO" id="FM1-wt-asd"/>
+                                                    <outlet property="trackLabel" destination="i2M-Qk-6JK" id="5GF-HG-NCk"/>
                                                     <segue destination="eBa-2e-HuH" kind="presentation" identifier="showSongLyrics" modalPresentationStyle="overCurrentContext" id="Ofu-dE-y5f"/>
                                                 </connections>
                                             </tableViewCell>

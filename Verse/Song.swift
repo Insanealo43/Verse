@@ -6,7 +6,7 @@
 //  Copyright © 2017 ALV. All rights reserved.
 //
 
-import RealmSwift
+//import RealmSwift
 import SwiftyJSON
 
 @available(iOS 10.0, *)
@@ -21,14 +21,14 @@ var dateFormatter: ISO8601DateFormatter = {
   return formatter
 }()
 
-class Song: Object {
+class Song {
 
-  dynamic var id: String!
-  dynamic var name: String!
-  dynamic var artist: String!
-  dynamic var album: String!
-  dynamic var artwork: Photo!
-  dynamic var releaseDate: Date!
+  var id: String!
+  var name: String!
+  var artist: String!
+  var album: String!
+  var artwork: Photo!
+  var releaseDate: Date!
 
   convenience init?(_ json: JSON) {
     guard
@@ -49,10 +49,6 @@ class Song: Object {
     self.album = album
     self.artwork = Photo(url: artworkUrl)
     self.releaseDate = dateFormatter.date(from: releaseDate)!
-  }
-
-  override static func primaryKey() -> String? {
-    return "id"
   }
 
 }
