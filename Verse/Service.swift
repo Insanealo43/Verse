@@ -63,7 +63,17 @@ extension DataRequest {
         case .success(let json):
           fulfill(JSON(json))
         case .failure(let error):
-          reject(Service.Error.jsonSerialization(error: error))
+          if
+            let data = response.data,
+            let javascriptString = String(data: data, encoding: .utf8),
+            let json = try? JSONSerialization.data(
+              withJSONObject: [javascriptString],
+              options: []) {
+            fulfill(JSON(json))
+          }
+          else {
+            reject(Service.Error.jsonSerialization(error: error))
+          }
         }
       }
     }

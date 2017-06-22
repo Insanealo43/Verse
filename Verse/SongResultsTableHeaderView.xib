@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SongResultsTableHeaderView" customModule="Verse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5j-PC-p5O">
+                    <rect key="frame" x="-0.5" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6M-6C-3gT">
+                            <rect key="frame" x="10" y="19" width="138.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="K6M-6C-3gT" firstAttribute="leading" secondItem="b5j-PC-p5O" secondAttribute="leading" constant="10" id="Zdb-J8-Ecf"/>
+                        <constraint firstItem="K6M-6C-3gT" firstAttribute="centerY" secondItem="b5j-PC-p5O" secondAttribute="centerY" id="ogI-XU-Etw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="b5j-PC-p5O" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Qmj-AY-hLG"/>
+                <constraint firstItem="b5j-PC-p5O" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="T6l-Ux-0jq"/>
+                <constraint firstItem="b5j-PC-p5O" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="iLK-bx-MZE"/>
+                <constraint firstItem="b5j-PC-p5O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zxw-OT-ni7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headerLabel" destination="K6M-6C-3gT" id="hrf-pL-faU"/>
+            </connections>
+            <point key="canvasLocation" x="19.5" y="101"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_VerseTests {
+  umbrella header "Pods-VerseTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
