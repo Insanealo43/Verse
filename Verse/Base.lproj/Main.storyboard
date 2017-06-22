@@ -9,7 +9,6 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-EL-yfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="99"/>
+            <point key="canvasLocation" x="-138" y="99"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -206,10 +205,38 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="637"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frd-tC-cHT">
-                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="48"/>
+                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="52"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album-placeholder-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-PO-EOY" customClass="PhotoImageView" customModule="Verse" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="7.5" width="37" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Pp4-PO-EOY" secondAttribute="height" multiplier="1:1" id="9gn-QV-hOC"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="njP-nf-nPC">
+                                                <rect key="frame" x="67" y="7.5" width="50.5" height="37.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-Iu-xSf" customClass="SongLabel" customModule="Verse" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8E-re-9Yl" customClass="SongLabel" customModule="Verse" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="21.5" width="50.5" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98U-zF-3pm">
-                                                <rect key="frame" x="316" y="9.5" width="44" height="29"/>
+                                                <rect key="frame" x="316" y="11.5" width="44" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="eqp-Lh-clK"/>
                                                 </constraints>
@@ -224,32 +251,38 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Pp4-PO-EOY" firstAttribute="height" secondItem="frd-tC-cHT" secondAttribute="height" constant="-15" id="17T-mV-8ou"/>
+                                            <constraint firstItem="njP-nf-nPC" firstAttribute="centerY" secondItem="frd-tC-cHT" secondAttribute="centerY" id="BWL-Ac-D5D"/>
+                                            <constraint firstItem="Pp4-PO-EOY" firstAttribute="centerY" secondItem="frd-tC-cHT" secondAttribute="centerY" id="EJh-vR-byr"/>
+                                            <constraint firstItem="Pp4-PO-EOY" firstAttribute="leading" secondItem="frd-tC-cHT" secondAttribute="leading" constant="20" id="Gvg-yd-xKS"/>
                                             <constraint firstAttribute="trailing" secondItem="98U-zF-3pm" secondAttribute="trailing" constant="15" id="LP5-v7-svU"/>
+                                            <constraint firstItem="njP-nf-nPC" firstAttribute="leading" secondItem="Pp4-PO-EOY" secondAttribute="trailing" constant="10" id="gi2-of-GjI"/>
                                             <constraint firstItem="98U-zF-3pm" firstAttribute="centerY" secondItem="frd-tC-cHT" secondAttribute="centerY" id="lzs-Gz-vZb"/>
-                                            <constraint firstAttribute="height" constant="48" id="rcK-eq-B2r"/>
+                                            <constraint firstAttribute="height" constant="52" id="rcK-eq-B2r"/>
+                                            <constraint firstItem="98U-zF-3pm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="njP-nf-nPC" secondAttribute="trailing" constant="10" id="ugj-ES-T4W"/>
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQW-Nj-jj6">
-                                        <rect key="frame" x="0.0" y="48" width="375" height="589"/>
+                                        <rect key="frame" x="0.0" y="52" width="375" height="585"/>
                                         <subviews>
                                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNP-6L-taA">
-                                                <rect key="frame" x="15" y="-589" width="345" height="1178"/>
+                                                <rect key="frame" x="15" y="-830" width="345" height="1415"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="eBa-2e-HuH" id="EAz-la-jL1"/>
                                                 </connections>
                                             </webView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="uNP-6L-taA" firstAttribute="height" secondItem="AQW-Nj-jj6" secondAttribute="height" multiplier="2" id="8rx-j2-Fld"/>
+                                            <constraint firstItem="uNP-6L-taA" firstAttribute="height" secondItem="AQW-Nj-jj6" secondAttribute="height" constant="830" id="8rx-j2-Fld"/>
                                             <constraint firstItem="uNP-6L-taA" firstAttribute="width" secondItem="AQW-Nj-jj6" secondAttribute="width" constant="-30" id="apY-fA-pUK"/>
                                             <constraint firstItem="uNP-6L-taA" firstAttribute="centerX" secondItem="AQW-Nj-jj6" secondAttribute="centerX" id="cBy-nl-qFU"/>
                                             <constraint firstAttribute="bottom" secondItem="uNP-6L-taA" secondAttribute="bottom" id="sgK-2w-IR2"/>
                                         </constraints>
                                     </view>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lv5-Uy-Ee0">
-                                        <rect key="frame" x="169" y="324" width="37" height="37"/>
+                                        <rect key="frame" x="169" y="326" width="37" height="37"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -282,6 +315,9 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="lv5-Uy-Ee0" id="88V-f2-syh"/>
+                        <outlet property="albumImageView" destination="Pp4-PO-EOY" id="BNx-o3-zoz"/>
+                        <outlet property="albumLabel" destination="h8E-re-9Yl" id="IA4-di-6Au"/>
+                        <outlet property="songLabel" destination="q2E-Iu-xSf" id="b0q-Gt-nnT"/>
                         <outlet property="webView" destination="uNP-6L-taA" id="doo-SW-aK3"/>
                     </connections>
                 </viewController>
